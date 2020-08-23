@@ -5,14 +5,8 @@ on: [push]
 jobs:
   amd64-repo:
     runs-on: ubuntu-latest
+    container:
+      image: alpine:3.12.0
     steps:
     - name: Install Alpine package build deps
-      run: sudo apt-get install -y gcc patch libssl-dev liblua5.2-dev
-    - name: Clone apktools
-      run: git clone --branch v2.10.4 --depth 1 https://github.com/alpinelinux/apk-tools.git
-    - name: Build apktools
-      run: LUA_VERSION=5.2 LUA_PC=lua cd apk-tools && make
-    - name: Clone abuild
-      run: git clone --branch v3.6.0 --depth 1 https://github.com/alpinelinux/abuild.git
-    - name: Build abuild
-      run: cd abuild && make abuild-tar
+      run: apk add alpine-sdk
