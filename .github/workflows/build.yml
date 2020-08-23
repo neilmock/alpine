@@ -9,6 +9,6 @@ jobs:
     - name: Install Alpine package build deps
       run: sudo apt-get install -y gcc patch libssl-dev liblua5.3-dev
     - name: Clone abuild
-      run: git clone --branch v3.3.1 --depth 1 https://github.com/alpinelinux/abuild.git
+      run: git clone --branch v3.6.0 --depth 1 https://github.com/alpinelinux/abuild.git
     - name: Build abuild
-      run: LUA_VERSION=5.3 LUA_PC=lua abuild && make
+      run: LUA_VERSION=5.3 LUA_PC=lua cd abuild && make
