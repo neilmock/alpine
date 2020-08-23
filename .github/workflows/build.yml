@@ -1,0 +1,10 @@
+name: build
+
+on: [push]
+
+jobs:
+  amd64-repo:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Alpine package build deps
+      run: sudo apt-get install -y gcc patch libssl-dev liblua-5.3-dev
