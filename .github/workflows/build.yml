@@ -8,7 +8,11 @@ jobs:
     steps:
     - name: Install Alpine package build deps
       run: sudo apt-get install -y gcc patch libssl-dev liblua5.3-dev
+    - name: Clone apktools
+      run: git clone --branch v2.10.4 --depth 1 https://github.com/alpinelinux/apk-tools.git
+    - name: Build apktools
+      run: LUA_VERSION=5.3 LUA_PC=lua cd apktools && make
     - name: Clone abuild
       run: git clone --branch v3.6.0 --depth 1 https://github.com/alpinelinux/abuild.git
     - name: Build abuild
-      run: LUA_VERSION=5.3 LUA_PC=lua cd abuild && make
+      run: cd abuild && make abuild-tar
