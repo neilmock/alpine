@@ -3,13 +3,25 @@ name: build
 on: [push]
 
 jobs:
-  build:
+  amd64:
     runs-on: ubuntu-latest
     container:
       image: alpine:3.12.0
     steps:
     - name: Clone the repo
       uses: actions/checkout@v2
+    - name: Cache the repository index
+      id: cache-apkindex
+      uses: actions/cache@v2
+      with:
+        path: ~/packages/alpine/x86_64/APKINDEX.tar.gz
+        key: amd64-apkindex-${{hashFiles('**/APKBUILD')}}
+    - name: Cache the Nomad build file
+      id: cache-nomad-apkbuild
+      uses: actions/cache@v2
+      with:
+        path: nomad/APKBUILD
+        key: amd64-nomad-apkbuild-${{hashFiles('nomad/APKBUILD')}}
     - name: Install Alpine package build deps
       run: apk add alpine-sdk
     - name: Setup abuild
@@ -17,4 +29,5 @@ jobs:
       env:
         ABUILD_PRIVATE_KEY: ${{secrets.ABUILD_PRIVATE_KEY}}
     - name: Build Nomad
-      run: cd nomad && abuild -F && find ~/packages
+      run: cd nomad && abuild -F
+      if: steps.cache-nomad-apkbuild.outputs.cache-hit != 'true'
