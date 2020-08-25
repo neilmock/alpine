@@ -16,3 +16,5 @@ jobs:
       run: .github/script/setup-abuild
       env:
         ABUILD_PRIVATE_KEY: ${{secrets.ABUILD_PRIVATE_KEY}}
+    - name: Build Nomad
+      run: cd nomad && abuild -F

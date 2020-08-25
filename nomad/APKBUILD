@@ -1,0 +1,14 @@
+pkgname=nomad
+pkgdesc="HashiCorp Nomad"
+pkgver=0.12.3
+pkgrel=0
+license="MIT"
+url="https://nomadproject.io"
+arch="x86_64"
+source="${pkgname}-${pkgver}.zip::https://releases.hashicorp.com/nomad/0.12.3/nomad_0.12.3_linux_amd64.zip"
+
+package() {
+        install -m755 -o root -g root -D src/$pkgname "$pkgdir/usr/bin/$pkgname"
+}
+
+sha512sums="c115174efba4dd28763dae955720fdab0daa4efa76c0599c30259dce0b2748864a4ec672e6c8063313d48f0b87604437960a5d6ee11f9c4b6a8d8a25e1966d02  nomad-0.12.3.zip"
