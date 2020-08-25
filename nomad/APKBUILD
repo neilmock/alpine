@@ -6,6 +6,7 @@ license="MIT"
 url="https://nomadproject.io"
 arch="x86_64"
 source="${pkgname}-${pkgver}.zip::https://releases.hashicorp.com/nomad/0.12.3/nomad_0.12.3_linux_amd64.zip"
+options="!tracedeps"
 
 package() {
         install -m755 -o root -g root -D src/$pkgname "$pkgdir/usr/bin/$pkgname"

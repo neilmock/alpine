@@ -2,7 +2,10 @@
 
 set -eux
 
+whoami
+echo $HOME
+
 mkdir ~/.abuild
 
 echo "$ABUILD_PRIVATE_KEY" > ~/.abuild/repo.key
-echo "PACKAGER_PRIVKEY=\"/root/.abuild/repo.key\"" > ~/.abuild/abuild.conf
+echo "PACKAGER_PRIVKEY=\"$HOME/.abuild/repo.key\"" > ~/.abuild/abuild.conf
