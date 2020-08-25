@@ -3,7 +3,7 @@ name: build
 on: [push]
 
 jobs:
-  amd64-repo:
+  build:
     runs-on: ubuntu-latest
     container:
       image: alpine:3.12.0
@@ -12,3 +12,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Install Alpine package build deps
       run: apk add alpine-sdk
+    - name: Setup abuild
+      run: .github/script/setup-abuild
+      env:
+        ABUILD_PRIVATE_KEY: ${{secrets.ABUILD_PRIVATE_KEY}}

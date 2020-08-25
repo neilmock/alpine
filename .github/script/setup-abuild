@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eux
+
+mkdir ~/.abuild
+
+echo $ABUILD_PRIVATE_KEY > ~/.abuild/repo.key
+echo "PACKAGER_PRIVKEY=\"/root/.abuild/repo.key\"" > ~/.abuild/abuild.conf
