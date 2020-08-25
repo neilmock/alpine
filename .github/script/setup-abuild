@@ -2,9 +2,6 @@
 
 set -eux
 
-whoami
-echo $HOME
-
 mkdir ~/.abuild
 
 echo "$ABUILD_PRIVATE_KEY" > ~/.abuild/repo.key

@@ -17,4 +17,4 @@ jobs:
       env:
         ABUILD_PRIVATE_KEY: ${{secrets.ABUILD_PRIVATE_KEY}}
     - name: Build Nomad
-      run: cd nomad && abuild -F
+      run: cd nomad && abuild -F && ls -alh ~/packages
