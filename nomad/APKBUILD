@@ -2,6 +2,7 @@ pkgname=nomad
 pkgdesc="HashiCorp Nomad"
 pkgver=0.12.3
 pkgrel=0
+license="getenv"
 url="https://nomadproject.io"
 arch="x86_64"
 source="${pkgname}-${pkgver}.zip::https://releases.hashicorp.com/nomad/0.12.3/nomad_0.12.3_linux_amd64.zip"
